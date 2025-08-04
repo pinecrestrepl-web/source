@@ -20,6 +20,11 @@ const LandingPage: React.FC = () => {
 
     const residentialPlans = pricingPlans.filter(p => p.class === 'Residential');
 
+    const handleScrollToPricing = (e: React.MouseEvent<HTMLAnchorElement>) => {
+        e.preventDefault();
+        document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' });
+    };
+
   return (
     <div className="bg-surface-dark text-slate-200">
       {/* Hero Section */}
@@ -33,7 +38,7 @@ const LandingPage: React.FC = () => {
           <p className="text-lg sm:text-xl text-slate-400 mb-10 max-w-3xl mx-auto">
             Get instant access to verified technicians for all your home service needs. From emergency repairs to routine maintenance, all under one subscription.
           </p>
-          <a href="#pricing" className="bg-brand-primary hover:bg-brand-secondary text-slate-900 font-bold py-3 px-8 rounded-full text-lg transition-transform transform hover:scale-105 shadow-lg shadow-brand-primary/20">
+          <a href="#pricing" onClick={handleScrollToPricing} className="bg-brand-primary hover:bg-brand-secondary text-slate-900 font-bold py-3 px-8 rounded-full text-lg transition-transform transform hover:scale-105 shadow-lg shadow-brand-primary/20 cursor-pointer">
             View Subscription Plans
           </a>
         </div>
