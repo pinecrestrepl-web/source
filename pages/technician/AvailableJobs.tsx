@@ -18,14 +18,14 @@ const AvailableJobs: React.FC = () => {
 
     return (
         <div>
-            <h1 className="text-3xl font-bold text-slate-800 mb-6">Available Jobs</h1>
+            <h1 className="text-3xl font-bold text-text-primary mb-6">Available Jobs</h1>
             <div className="space-y-4">
                 {availableTickets.length > 0 ? availableTickets.map(ticket => (
-                    <div key={ticket.id} className="bg-white p-6 rounded-lg shadow-md flex flex-wrap justify-between items-center gap-4">
+                    <div key={ticket.id} className="bg-surface-light p-6 rounded-lg shadow-md flex flex-wrap justify-between items-center gap-4 border border-brand-border">
                         <div>
-                            <h3 className="text-lg font-bold text-slate-800">{ticket.serviceType}</h3>
-                            <p className="text-sm text-slate-600 mt-1">{ticket.description}</p>
-                            <p className="text-xs text-slate-500 mt-2">
+                            <h3 className="text-lg font-bold text-text-primary">{ticket.serviceType}</h3>
+                            <p className="text-sm text-text-secondary mt-1">{ticket.description}</p>
+                            <p className="text-xs text-text-secondary/80 mt-2">
                                 Customer: {ticket.customerName} &bull; Posted: {ticket.createdAt.toLocaleDateString()}
                             </p>
                         </div>
@@ -36,14 +36,14 @@ const AvailableJobs: React.FC = () => {
                             >
                                 Accept
                             </button>
-                             <button className="bg-slate-200 text-slate-700 px-4 py-2 rounded-md font-semibold hover:bg-slate-300">
+                             <button className="bg-slate-700 text-slate-200 px-4 py-2 rounded-md font-semibold hover:bg-slate-600">
                                 Reject
                             </button>
                         </div>
                     </div>
                 )) : (
-                    <div className="text-center py-10 bg-white rounded-lg shadow-md">
-                        <p className="text-slate-500">No available jobs at the moment. We'll notify you when a new job appears!</p>
+                    <div className="text-center py-10 bg-surface-light rounded-lg shadow-md border border-brand-border">
+                        <p className="text-text-secondary">No available jobs at the moment. We'll notify you when a new job appears!</p>
                     </div>
                 )}
             </div>

@@ -63,7 +63,7 @@ const Reports: React.FC = () => {
     };
 
     const SortableHeader: React.FC<{ sortKey: string; children: React.ReactNode }> = ({ sortKey, children }) => (
-        <th className="p-3 text-sm font-semibold text-slate-600 cursor-pointer hover:bg-slate-200" onClick={() => requestSort(sortKey)}>
+        <th className="p-3 text-sm font-semibold text-text-secondary cursor-pointer hover:bg-slate-700/50" onClick={() => requestSort(sortKey)}>
             <div className="flex items-center gap-2">{children} {getSortIcon(sortKey)}</div>
         </th>
     );
@@ -71,18 +71,18 @@ const Reports: React.FC = () => {
     return (
         <div>
             <div className="flex justify-between items-center mb-6">
-                <h1 className="text-3xl font-bold text-slate-800">Service Reports</h1>
+                <h1 className="text-3xl font-bold text-text-primary">Service Reports</h1>
                 <select value={reportType} onChange={e => setReportType(e.target.value as ReportType)} className="input">
                     <option value="tickets">Tickets Report</option>
                     <option value="users">Users Report</option>
                 </select>
             </div>
-            <div className="bg-white p-6 rounded-lg shadow-md">
+            <div className="bg-surface-light p-6 rounded-xl shadow-lg border border-brand-border">
                  <div className="overflow-x-auto">
                     {reportType === 'tickets' && (
                         <table className="w-full text-left">
                             <thead>
-                                <tr className="bg-slate-100">
+                                <tr className="bg-surface-dark">
                                     <SortableHeader sortKey="createdAt">Created At</SortableHeader>
                                     <SortableHeader sortKey="serviceType">Service</SortableHeader>
                                     <SortableHeader sortKey="customerName">Customer</SortableHeader>
@@ -90,9 +90,9 @@ const Reports: React.FC = () => {
                                     <SortableHeader sortKey="status">Status</SortableHeader>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody className="text-text-primary">
                                 {sortedTickets.map(ticket => (
-                                    <tr key={ticket.id} className="border-b border-slate-200 hover:bg-slate-50">
+                                    <tr key={ticket.id} className="border-b border-brand-border hover:bg-surface-dark">
                                         <td className="p-3">{ticket.createdAt.toLocaleDateString()}</td>
                                         <td className="p-3">{ticket.serviceType}</td>
                                         <td className="p-3">{ticket.customerName}</td>
@@ -106,17 +106,17 @@ const Reports: React.FC = () => {
                     {reportType === 'users' && (
                          <table className="w-full text-left">
                             <thead>
-                                <tr className="bg-slate-100">
+                                <tr className="bg-surface-dark">
                                     <SortableHeader sortKey="createdAt">Registration Date</SortableHeader>
                                     <SortableHeader sortKey="name">Name</SortableHeader>
                                     <SortableHeader sortKey="email">Email</SortableHeader>
                                     <SortableHeader sortKey="role">Role</SortableHeader>
-                                    <th className="p-3 text-sm font-semibold text-slate-600">Details</th>
+                                    <th className="p-3 text-sm font-semibold text-text-secondary">Details</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody className="text-text-primary">
                                 {sortedUsers.map(user => (
-                                    <tr key={user.id} className="border-b border-slate-200 hover:bg-slate-50">
+                                    <tr key={user.id} className="border-b border-brand-border hover:bg-surface-dark">
                                         <td className="p-3">{user.createdAt.toLocaleDateString()}</td>
                                         <td className="p-3">{user.name}</td>
                                         <td className="p-3">{user.email}</td>
@@ -132,7 +132,7 @@ const Reports: React.FC = () => {
                     )}
                  </div>
             </div>
-            <style>{`.input { display: block; padding: 0.5rem 0.75rem; background-color: white; border: 1px solid #cbd5e1; border-radius: 0.375rem; }`}</style>
+            <style>{`.input { display: block; padding: 0.5rem 0.75rem; background-color: var(--color-surface-dark); border: 1px solid var(--color-border); border-radius: 0.375rem; color: var(--color-text-primary); }`}</style>
         </div>
     );
 };

@@ -51,28 +51,28 @@ const PaymentReports: React.FC = () => {
     };
 
     const SortableHeader: React.FC<{ sortKey: string; children: React.ReactNode }> = ({ sortKey, children }) => (
-        <th className="p-3 text-sm font-semibold text-slate-600 cursor-pointer hover:bg-slate-200" onClick={() => requestSort(sortKey)}>
+        <th className="p-3 text-sm font-semibold text-text-secondary cursor-pointer hover:bg-slate-700/50" onClick={() => requestSort(sortKey)}>
             <div className="flex items-center gap-2">{children} {(!sortConfig || sortConfig.key !== sortKey) ? <ArrowUpDown size={14} className="opacity-30" /> : (sortConfig.direction === 'asc' ? '🔼' : '🔽')}</div>
         </th>
     );
 
     return (
         <div>
-            <h1 className="text-3xl font-bold text-slate-800 mb-6">Payment Reports</h1>
+            <h1 className="text-3xl font-bold text-text-primary mb-6">Payment Reports</h1>
             
-            <div className="mb-4 border-b border-slate-300">
+            <div className="mb-4 border-b border-brand-border">
                 <nav className="flex gap-4">
-                    <button onClick={() => setReportType('customer')} className={`py-2 px-4 text-sm font-medium ${reportType === 'customer' ? 'border-b-2 border-brand-primary text-brand-primary' : 'text-slate-600'}`}>Customer Payments</button>
-                    <button onClick={() => setReportType('technician')} className={`py-2 px-4 text-sm font-medium ${reportType === 'technician' ? 'border-b-2 border-brand-primary text-brand-primary' : 'text-slate-600'}`}>Technician Payouts</button>
+                    <button onClick={() => setReportType('customer')} className={`py-2 px-4 text-sm font-medium ${reportType === 'customer' ? 'border-b-2 border-brand-primary text-brand-primary' : 'text-text-secondary hover:text-text-primary'}`}>Customer Payments</button>
+                    <button onClick={() => setReportType('technician')} className={`py-2 px-4 text-sm font-medium ${reportType === 'technician' ? 'border-b-2 border-brand-primary text-brand-primary' : 'text-text-secondary hover:text-text-primary'}`}>Technician Payouts</button>
                 </nav>
             </div>
 
-            <div className="bg-white p-6 rounded-lg shadow-md">
+            <div className="bg-surface-light p-6 rounded-xl shadow-lg border border-brand-border">
                  <div className="overflow-x-auto">
                     {reportType === 'customer' && (
-                        <table className="w-full text-left">
+                        <table className="w-full text-left text-text-primary">
                             <thead>
-                                <tr className="bg-slate-100">
+                                <tr className="bg-surface-dark">
                                     <SortableHeader sortKey="paymentDate">Date</SortableHeader>
                                     <SortableHeader sortKey="customerName">Customer</SortableHeader>
                                     <SortableHeader sortKey="type">Type</SortableHeader>
@@ -82,7 +82,7 @@ const PaymentReports: React.FC = () => {
                             </thead>
                             <tbody>
                                 {sortedCustomerPayments.map(p => (
-                                    <tr key={p.id} className="border-b border-slate-200 hover:bg-slate-50">
+                                    <tr key={p.id} className="border-b border-brand-border last:border-none hover:bg-surface-dark">
                                         <td className="p-3">{p.paymentDate.toLocaleDateString()}</td>
                                         <td className="p-3">{p.customerName}</td>
                                         <td className="p-3">{p.type}</td>
@@ -94,9 +94,9 @@ const PaymentReports: React.FC = () => {
                         </table>
                     )}
                     {reportType === 'technician' && (
-                         <table className="w-full text-left">
+                         <table className="w-full text-left text-text-primary">
                             <thead>
-                                <tr className="bg-slate-100">
+                                <tr className="bg-surface-dark">
                                     <SortableHeader sortKey="completedAt">Payout Date</SortableHeader>
                                     <SortableHeader sortKey="technicianName">Technician</SortableHeader>
                                     <SortableHeader sortKey="serviceType">Job</SortableHeader>
@@ -105,7 +105,7 @@ const PaymentReports: React.FC = () => {
                             </thead>
                             <tbody>
                                 {sortedTechnicianPayouts.map(t => (
-                                    <tr key={t.id} className="border-b border-slate-200 hover:bg-slate-50">
+                                    <tr key={t.id} className="border-b border-brand-border last:border-none hover:bg-surface-dark">
                                         <td className="p-3">{t.completedAt?.toLocaleDateString()}</td>
                                         <td className="p-3">{t.technicianName}</td>
                                         <td className="p-3">{t.serviceType}</td>

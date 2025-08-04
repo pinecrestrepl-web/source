@@ -22,17 +22,17 @@ const TechnicianPayments: React.FC = () => {
          <div className="overflow-x-auto">
             <table className="w-full text-left">
                 <thead>
-                    <tr className="bg-slate-100">
-                        <th className="p-3 text-sm font-semibold text-slate-600">Completion Date</th>
-                        <th className="p-3 text-sm font-semibold text-slate-600">Technician</th>
-                        <th className="p-3 text-sm font-semibold text-slate-600">Job</th>
-                        <th className="p-3 text-sm font-semibold text-slate-600">Earning</th>
-                        <th className="p-3 text-sm font-semibold text-slate-600">Action</th>
+                    <tr className="bg-surface-dark border-b border-brand-border">
+                        <th className="p-3 text-sm font-semibold text-text-secondary">Completion Date</th>
+                        <th className="p-3 text-sm font-semibold text-text-secondary">Technician</th>
+                        <th className="p-3 text-sm font-semibold text-text-secondary">Job</th>
+                        <th className="p-3 text-sm font-semibold text-text-secondary">Earning</th>
+                        <th className="p-3 text-sm font-semibold text-text-secondary">Action</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody className="text-text-primary">
                     {jobList.length > 0 ? jobList.map(ticket => (
-                        <tr key={ticket.id} className="border-b border-slate-200 hover:bg-slate-50">
+                        <tr key={ticket.id} className="border-b border-brand-border last:border-none hover:bg-surface-dark">
                             <td className="p-3 text-sm">{ticket.completedAt?.toLocaleDateString()}</td>
                             <td className="p-3">{ticket.technicianName}</td>
                             <td className="p-3 text-sm">{ticket.serviceType}</td>
@@ -43,13 +43,13 @@ const TechnicianPayments: React.FC = () => {
                                         Pay Now
                                     </button>
                                 ) : (
-                                    <span className="text-green-600 font-semibold text-sm">Paid</span>
+                                    <span className="text-green-400 font-semibold text-sm">Paid</span>
                                 )}
                             </td>
                         </tr>
                     )) : (
                         <tr>
-                            <td colSpan={5} className="p-4 text-center text-slate-500">
+                            <td colSpan={5} className="p-4 text-center text-text-secondary">
                                 {isPending ? 'No pending payments.' : 'No payments made yet.'}
                             </td>
                         </tr>
@@ -61,15 +61,15 @@ const TechnicianPayments: React.FC = () => {
 
     return (
         <div>
-            <h1 className="text-3xl font-bold text-slate-800 mb-6">Technician Payments</h1>
+            <h1 className="text-3xl font-bold text-text-primary mb-6">Technician Payments</h1>
 
-            <div className="bg-white p-6 rounded-lg shadow-md mb-8">
-                <h2 className="text-xl font-bold text-slate-700 mb-4">Pending Payments</h2>
+            <div className="bg-surface-light p-6 rounded-xl shadow-lg border border-brand-border mb-8">
+                <h2 className="text-xl font-bold text-text-primary mb-4">Pending Payments</h2>
                 {renderTable(pending, true)}
             </div>
 
-            <div className="bg-white p-6 rounded-lg shadow-md">
-                <h2 className="text-xl font-bold text-slate-700 mb-4">Completed Payments</h2>
+            <div className="bg-surface-light p-6 rounded-xl shadow-lg border border-brand-border">
+                <h2 className="text-xl font-bold text-text-primary mb-4">Completed Payments</h2>
                 {renderTable(paid, false)}
             </div>
         </div>

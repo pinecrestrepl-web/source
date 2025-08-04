@@ -46,11 +46,11 @@ const SubscriptionPage: React.FC = () => {
 
     return (
         <div>
-            <h1 className="text-3xl font-bold text-slate-800 mb-2">Manage Your Subscription</h1>
-            <p className="text-slate-600 mb-6">Change your plan anytime. The new plan will be effective immediately after payment.</p>
+            <h1 className="text-3xl font-bold text-text-primary mb-2">Manage Your Subscription</h1>
+            <p className="text-text-secondary mb-6">Change your plan anytime. The new plan will be effective immediately after payment.</p>
             
             {showSuccess && (
-                 <div className="mb-6 flex items-center gap-2 text-green-700 bg-green-100 p-4 rounded-md font-semibold">
+                 <div className="mb-6 flex items-center gap-2 text-green-300 bg-green-500/10 p-4 rounded-md font-semibold border border-green-500/20">
                     <CheckCircle size={20} />
                     <span>Your subscription has been updated successfully!</span>
                 </div>
@@ -73,7 +73,7 @@ const SubscriptionPage: React.FC = () => {
                 {selectedPlanTier && selectedPlanTier !== customer.subscription && (
                     <button 
                         onClick={handleConfirmChange}
-                        className="bg-brand-primary text-white px-8 py-3 rounded-lg font-semibold hover:bg-brand-secondary transition-colors shadow-lg"
+                        className="bg-brand-primary text-slate-900 px-8 py-3 rounded-lg font-semibold hover:bg-brand-secondary transition-colors shadow-lg"
                     >
                         Confirm Change to {selectedPlanTier} Plan
                     </button>

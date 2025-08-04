@@ -22,21 +22,21 @@ const PaymentGatewayModal: React.FC<PaymentGatewayModalProps> = ({ isOpen, onClo
   };
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-      <div className="bg-white rounded-lg shadow-xl p-6 w-full max-w-sm relative">
-        <button onClick={onClose} className="absolute top-3 right-3 text-slate-400 hover:text-slate-600">
+    <div className="fixed inset-0 bg-black bg-opacity-70 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+      <div className="bg-surface-light rounded-lg shadow-xl p-6 w-full max-w-sm relative border border-brand-border">
+        <button onClick={onClose} className="absolute top-3 right-3 text-text-secondary hover:text-text-primary">
           <X size={24} />
         </button>
-        <h2 className="text-2xl font-bold text-brand-dark text-center">Complete Your Payment</h2>
-        <p className="text-center text-slate-500 mt-2">To activate your subscription</p>
+        <h2 className="text-2xl font-bold text-brand-primary text-center">Complete Your Payment</h2>
+        <p className="text-center text-text-secondary mt-2">To activate your subscription</p>
         
-        <div className="mt-6 bg-slate-100 p-4 rounded-lg text-center">
-            <p className="text-sm text-slate-600">Total Amount</p>
-            <p className="text-4xl font-extrabold text-slate-900">₹{amount.toFixed(2)}</p>
+        <div className="mt-6 bg-surface-dark p-4 rounded-lg text-center">
+            <p className="text-sm text-text-secondary">Total Amount</p>
+            <p className="text-4xl font-extrabold text-text-primary">₹{amount.toFixed(2)}</p>
         </div>
 
         <div className="mt-4 text-center">
-            <p className="text-sm text-slate-600">Pay using any UPI app to:</p>
+            <p className="text-sm text-text-secondary">Pay using any UPI app to:</p>
             <p className="font-semibold text-brand-primary mt-1 select-all">{companyUpiId}</p>
         </div>
         
@@ -48,7 +48,7 @@ const PaymentGatewayModal: React.FC<PaymentGatewayModalProps> = ({ isOpen, onClo
               Simulate Successful Payment
             </button>
         </div>
-        <p className="text-xs text-slate-400 text-center mt-4">This is a simulated payment gateway for demonstration.</p>
+        <p className="text-xs text-text-secondary text-center mt-4">This is a simulated payment gateway for demonstration.</p>
       </div>
     </div>
   );
